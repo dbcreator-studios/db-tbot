@@ -7,6 +7,10 @@ $message = $telegram['message']['text'];
 $cbid = $telegram['callback_query']['id'];
 $cbdata = $telegram['callback_query']['data'];
 
+function callback($up) {
+    return $up["callback_query"];
+}
+
 function apiReq($query) {
     return file_get_contents(url.$query);
 }
@@ -55,21 +59,21 @@ if($message == "Inline2") {
 }
 
 if($message == "Inline3") {
-    $but[] = array(array(array("text" => "Button 1", "url" => "www.google.com"),),);
-    $but[] = array(array(array("text" => "Button 2", "url" => "www.google.com"),),);
+    $but[] = array(array("text" => "Button 1", "url" => "www.google.com"),);
+    $but[] = array(array("text" => "Button 2", "url" => "www.google.com"),);
     inlineKeyboard($but, $chatid, "Inline3");
 }
 
-// if($message == "Inline4") {
-//     $but = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),),);
-//     inlineKeyboard($but, $chatid, "Inline4");
-// }
+if($message == "Inline4") {
+    $but = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),),);
+    inlineKeyboard($but, $chatid, "Inline4");
+}
 
-// if($callback($telegram)) {
-//     if($cbdata == "ciao1"){
-//         send($cbid, "Yahoo!");
-//     }
-// }
+if(callback($telegram)) {
+    if($cbdata == "ciao1"){
+        send($cbid, "Yahoo!");
+    }
+}
 
 ?>
 
