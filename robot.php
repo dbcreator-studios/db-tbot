@@ -8,16 +8,11 @@ $a = "Yahoo";
 file_get_contents($url . "/sendMessage?chat_id=" . $chatid . "&text=Halo Master " . $telegram['message']['chat']['first_name'] . " " . $telegram['message']['chat']['last_name']);
 ?>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
 <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
+    firebase.initializeApp({
         apiKey: "AIzaSyBMJLEFC-XqMAQlZYDe5ZYtPqqlTXAdWqg",
         authDomain: "db-tbot.firebaseapp.com",
         databaseURL: "https://db-tbot.firebaseio.com",
@@ -26,9 +21,8 @@ file_get_contents($url . "/sendMessage?chat_id=" . $chatid . "&text=Halo Master 
         messagingSenderId: "680265122937",
         appId: "1:680265122937:web:232a4b0b7232112c7cc0a8",
         measurementId: "G-EJ8LWJ7X1C"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    });
     firebase.analytics();
-    console.log(<?php $a ?>)
+    const db = firebase.firestore();
+    db.collection('Test').add({'telegram': <?= $telegram ?>});
 </script>
