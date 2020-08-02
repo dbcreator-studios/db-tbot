@@ -1,36 +1,31 @@
 <?php
-$token = "1283875359:AAGN5ztnpGFmT5vw4HV_l5GKJG99GkVRYYI";
-$url = "https://api.telegram.org/bot" . $token;
+define('token', "1283875359:AAGN5ztnpGFmT5vw4HV_l5GKJG99GkVRYYI");
+define('url', "https://api.telegram.org/bot" . token . "/");
 $telegram = json_decode(file_get_contents("php://input"), TRUE);
 $chatid = $telegram['message']['chat']['id'];
 $message = $telegram['message']['text'];
 
-var_dump($keyboard = json_encode($keyboard = [
-    'keyboard' => [
-        ['Yes'], ['No'], ['Maybe'],
-        ['1'], ['2'], ['3'],
-    ],
-
-    'resize_keyboard' => true,
-    'one_time_keyboard' => true,
-    'selective' => true
-]), true);
-
-
-function sendKeyboard($url, $chat_id, $keyboard)
-{
-    $text = "Merc -  Shomaa khobi?";
-    file_get_contents($url . "sendMessage?chat_id=" . $chat_id . "&reply_markup=" . $keyboard . "&text=" . urlencode($text));
+function apiReq($query) {
+    return file_get_contents(url.$query);
 }
 
-if ($message == "/start") {
-    sendKeyboard($url, $chatid, $keyboard);
+function send($chatid, $text) {
+    apiReq("sendmessage?chat_id=".$chatid."&text=".$text);
 }
 
-// file_get_contents($url . "/sendMessage?chat_id=" . $chatid . "&text=Halo Master " . $telegram['message']['chat']['first_name'] . " " . $telegram['message']['chat']['last_name']);
+function keyboard($tasti, $chatid, $text) {
+    $tasti2 = $tasti;
+    $tasti3 = json_encode($tasti2);
+    file_get_contents(url);
+}
+
+if($message == "/start") {
+    send($chatid, "Halo MAster");
+}
+
 ?>
 
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
 <script>
@@ -46,5 +41,4 @@ if ($message == "/start") {
     });
     firebase.analytics();
     const db = firebase.firestore();
-    // db.collection('Test').add(<?= json_decode(file_get_contents("php://input"), FALSE) ?>);
-</script>
+</script> -->
