@@ -4,7 +4,7 @@ define('url', "https://api.telegram.org/bot" . token . "/");
 $telegram = json_decode(file_get_contents("php://input"), TRUE);
 $chatid = $telegram['message']['chat']['id'];
 $message = $telegram['message']['text'];
-$cbid = $telegram['callback_query']['id'];
+$cbid = $telegram['callback_query']['from']['id'];
 $cbdata = $telegram['callback_query']['data'];
 
 function callback($up) {
