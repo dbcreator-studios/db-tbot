@@ -36,7 +36,7 @@ if($message == "/start") {
 if($message == "/keyboard") {
     $keyboard = [
         ["Inline", "Inline2"],
-        ["Inline3", "A4"],
+        ["Inline3", "Inline4"],
     ];
     $key = array(
         "resize_keyboard" => true,
@@ -65,7 +65,7 @@ if($message == "Inline4") {
     inlineKeyboard($but, $chatid, "Halo Master");
 }
 
-if($callback($update)) {
+if($callback($telegram)) {
     if($cbdata == "ciao1"){
         send($cbid, "Yahoo!");
     }
