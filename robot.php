@@ -1,7 +1,7 @@
 <?php 
 
 $token = "1283875359:AAGN5ztnpGFmT5vw4HV_l5GKJG99GkVRYYI";
-$url = "https://api.telegrarm.org/bot" . $token;
+$url = "https://api.telegram.org/bot" . $token;
 $telegram = json_decode(file_get_contents("php://input"), TRUE);
 $chatid = $telegram['message']['chat']['id'];
 $message = $telegram['message']['text'];
