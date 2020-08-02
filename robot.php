@@ -53,10 +53,8 @@ if($message == "Inline2") {
 }
 
 if($message == "Inline3") {
-    $but = array(
-        array(array("text" => "Button 1"), array("text" => "Button 2"),),
-        array(array("text" => "Button 3"), array("text" => "Button 4"),),
-    );
+    $but[] = array(array(array("text" => "Button 1"), array("text" => "Button 2"),),);
+    $but[] = array(array(array("text" => "Button 3"), array("text" => "Button 4"),),);
     inlineKeyboard($but, $chatid, "Halo Master");
 }
 
