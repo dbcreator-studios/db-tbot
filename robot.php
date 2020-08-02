@@ -4,8 +4,30 @@ $url = "https://api.telegram.org/bot" . $token;
 $telegram = json_decode(file_get_contents("php://input"), TRUE);
 $chatid = $telegram['message']['chat']['id'];
 $message = $telegram['message']['text'];
-$a = ['message', ['an']];
-file_get_contents($url . "/sendMessage?chat_id=" . $chatid . "&text=Halo Master " . $telegram['message']['chat']['first_name'] . " " . $telegram['message']['chat']['last_name']);
+
+var_dump($keyboard = json_encode($keyboard = [
+    'keyboard' => [
+        ['Yes'], ['No'], ['Maybe'],
+        ['1'], ['2'], ['3'],
+    ],
+
+    'resize_keyboard' => true,
+    'one_time_keyboard' => true,
+    'selective' => true
+]), true);
+
+
+function sendKeyboard($url, $chat_id, $keyboard)
+{
+    $text = "Merc -  Shomaa khobi?";
+    file_get_contents($url . "sendMessage?chat_id=" . $chat_id . "&reply_markup=" . $keyboard . "&text=" . urlencode($text));
+}
+
+if ($message == "/start") {
+    sendKeyboard($url, $chatid, $keyboard);
+}
+
+// file_get_contents($url . "/sendMessage?chat_id=" . $chatid . "&text=Halo Master " . $telegram['message']['chat']['first_name'] . " " . $telegram['message']['chat']['last_name']);
 ?>
 
 <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
@@ -24,5 +46,5 @@ file_get_contents($url . "/sendMessage?chat_id=" . $chatid . "&text=Halo Master 
     });
     firebase.analytics();
     const db = firebase.firestore();
-    db.collection('Test').add(<?= file_get_contents("php://input") ?>);
+    // db.collection('Test').add(<?= json_decode(file_get_contents("php://input"), FALSE) ?>);
 </script>
