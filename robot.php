@@ -4,6 +4,8 @@ define('url', "https://api.telegram.org/bot" . token . "/");
 $telegram = json_decode(file_get_contents("php://input"), TRUE);
 $chatid = $telegram['message']['chat']['id'];
 $message = $telegram['message']['text'];
+$cbid = $telegram['callback_query']['id'];
+$cbdata = $telegram['callback_query']['data'];
 
 function apiReq($query) {
     return file_get_contents(url.$query);
@@ -53,9 +55,24 @@ if($message == "Inline2") {
 }
 
 if($message == "Inline3") {
-    $but[] = array(array(array("text" => "Button 1"), array("text" => "Button 2"),),);
-    $but[] = array(array(array("text" => "Button 3"), array("text" => "Button 4"),),);
+    $but[] = array(array(array("text" => "Button 1", "url" => "www.google.com"),),);
+    $but[] = array(array(array("text" => "Button 2", "url" => "www.google.com"),),);
     inlineKeyboard($but, $chatid, "Halo Master");
+}
+
+if($message == "Inline4") {
+    $but[] = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),),);
+    $but[] = array(array(array("text" => "Button 2", "callback_data" => "ciao2"),),);
+    inlineKeyboard($but, $chatid, "Halo Master");
+}
+
+if($callback($update)) {
+    if($cbdata == "ciao1"){
+        send($cbid, "Yahoo!");
+    }
+    if($cbdata == "ciao2"){
+        send($cbid, "Yahoo!!");
+    }
 }
 
 ?>
