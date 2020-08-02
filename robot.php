@@ -33,7 +33,7 @@ if($message == "/start") {
 }
 if($message == "/keyboard") {
     $keyboard = [
-        ["Inline", "A2"],
+        ["Inline", "Inline2"],
         ["A3", "A4"],
     ];
     $key = array(
