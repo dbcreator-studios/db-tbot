@@ -46,23 +46,23 @@ if($message == "/keyboard") {
 }
 if($message == "Inline") {
     $but = array(array(array("text" => "Button 1", "url" => "www.google.com"),),);
-    inlineKeyboard($but, $chatid, "Halo Master");
+    inlineKeyboard($but, $chatid, "Inline");
 }
 
 if($message == "Inline2") {
     $but = array(array(array("text" => "Button 1", "url" => "www.google.com"), array("text" => "Button 2", "url" => "www.youtube.com"),),);
-    inlineKeyboard($but, $chatid, "Halo Master");
+    inlineKeyboard($but, $chatid, "Inline2");
 }
 
 if($message == "Inline3") {
     $but[] = array(array(array("text" => "Button 1", "url" => "www.google.com"),),);
     $but[] = array(array(array("text" => "Button 2", "url" => "www.google.com"),),);
-    inlineKeyboard($but, $chatid, "Halo Master");
+    inlineKeyboard($but, $chatid, "Inline3");
 }
 
 if($message == "Inline4") {
     $but = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),),);
-    inlineKeyboard($but, $chatid, "Halo Master");
+    inlineKeyboard($but, $chatid, "Inline4");
 }
 
 if($callback($telegram)) {
