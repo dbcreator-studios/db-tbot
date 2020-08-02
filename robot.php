@@ -19,12 +19,21 @@ function keyboard($tasti, $chatid, $text) {
     apiReq("sendmessage?chat_id=$chatid&text=$text&parse_mode=Markdown&reply_markup=$tasti3");
 }
 
+function inlineKeyboard($menud , $chatid, $text) {
+    $menu = $menud;
+    $d2 = array(
+        "inline_keyboard" => $menu,
+    );
+    $d2 = json_encode($d2);
+    return apiReq("sendmessage?chat_id=$chatid&text=$text&parse_mode=Markdown&reply_markup=$d2");
+}
+
 if($message == "/start") {
     send($chatid, "Halo Master");
 }
 if($message == "/keyboard") {
     $keyboard = [
-        ["A1", "A2"],
+        ["Inline", "A2"],
         ["A3", "A4"],
     ];
     $key = array(
@@ -32,6 +41,15 @@ if($message == "/keyboard") {
         "keyboard" => $keyboard,
     );
     keyboard($key, $chatid, "Halo Master");
+}
+if($message == "Inline") {
+    $but = array(array(array("text" => "Button 1", "url" => "www.google.com"),),);
+    inlineKeyboard($but, $chatid, "Halo Master");
+}
+
+if($message == "Inline2") {
+    $but = array(array(array("text" => "Button 1", "url" => "www.google.com"), array("text" => "Button 2", "url" => "www.youtube.com"),),);
+    inlineKeyboard($but, $chatid, "Halo Master");
 }
 
 ?>
