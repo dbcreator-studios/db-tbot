@@ -61,17 +61,13 @@ if($message == "Inline3") {
 }
 
 if($message == "Inline4") {
-    $but[] = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),),);
-    $but[] = array(array(array("text" => "Button 2", "callback_data" => "ciao2"),),);
+    $but = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),),);
     inlineKeyboard($but, $chatid, "Halo Master");
 }
 
 if($callback($update)) {
     if($cbdata == "ciao1"){
         send($cbid, "Yahoo!");
-    }
-    if($cbdata == "ciao2"){
-        send($cbid, "Yahoo!!");
     }
 }
 
