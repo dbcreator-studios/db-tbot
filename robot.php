@@ -10,17 +10,28 @@ function apiReq($query) {
 }
 
 function send($chatid, $text) {
-    apiReq("sendmessage?chat_id=".$chatid."&text=".$text);
+    return apiReq("sendmessage?chat_id=$chatid&text=$text");
 }
 
 function keyboard($tasti, $chatid, $text) {
     $tasti2 = $tasti;
     $tasti3 = json_encode($tasti2);
-    file_get_contents(url);
+    apiReq("sendmessage?chat_id=$chatid&text=$text&parse_mode=Markdown&reply_markup=$tasti3");
 }
 
 if($message == "/start") {
-    send($chatid, "Halo MAster");
+    send($chatid, "Halo Master");
+}
+if($message == "/keyboard") {
+    $keyboard = [
+        ["A1", "A2"],
+        ["A3", "A4"],
+    ];
+    $key = array(
+        "resize_keyboard" => true,
+        "keyboard" => $keyboard,
+    );
+    keyboard($key, $chatid, "Halo Master");
 }
 
 ?>
