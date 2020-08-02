@@ -65,7 +65,8 @@ if($message == "Inline3") {
 }
 
 if($message == "Inline4") {
-    $but = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),array("text" => "Button 2", "callback_data" => "ciao2"),),);
+    $but[] = array(array(array("text" => "Button 1", "callback_data" => "ciao1"),array("text" => "Button 2", "callback_data" => "ciao2"),),);
+    $but[] = array(array(array("text" => "Button 3", "callback_data" => "ciao3"),array("text" => "Button 4", "callback_data" => "ciao4"),),);
     inlineKeyboard($but, $chatid, "Inline4");
 }
 
@@ -75,6 +76,12 @@ if(callback($telegram)) {
     }
     if($cbdata == "ciao2"){
         send($cbid, "Yahoo!!");
+    }
+    if($cbdata == "ciao3"){
+        send($cbid, "Yahoo!!!");
+    }
+    if($cbdata == "ciao4"){
+        send($cbid, "Yahoo!!!!");
     }
 }
 
