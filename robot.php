@@ -86,21 +86,3 @@ if(callback($telegram)) {
 }
 
 ?>
-
-<!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-<script>
-    firebase.initializeApp({
-        apiKey: "AIzaSyBMJLEFC-XqMAQlZYDe5ZYtPqqlTXAdWqg",
-        authDomain: "db-tbot.firebaseapp.com",
-        databaseURL: "https://db-tbot.firebaseio.com",
-        projectId: "db-tbot",
-        storageBucket: "db-tbot.appspot.com",
-        messagingSenderId: "680265122937",
-        appId: "1:680265122937:web:232a4b0b7232112c7cc0a8",
-        measurementId: "G-EJ8LWJ7X1C"
-    });
-    firebase.analytics();
-    const db = firebase.firestore();
-</script> -->
