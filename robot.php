@@ -34,7 +34,7 @@ if($message == "/start") {
 if($message == "/keyboard") {
     $keyboard = [
         ["Inline", "Inline2"],
-        ["A3", "A4"],
+        ["Inline3", "A4"],
     ];
     $key = array(
         "resize_keyboard" => true,
@@ -49,6 +49,14 @@ if($message == "Inline") {
 
 if($message == "Inline2") {
     $but = array(array(array("text" => "Button 1", "url" => "www.google.com"), array("text" => "Button 2", "url" => "www.youtube.com"),),);
+    inlineKeyboard($but, $chatid, "Halo Master");
+}
+
+if($message == "Inline3") {
+    $but = array(
+        array(array("text" => "Button 1"), array("text" => "Button 2"),),
+        array(array("text" => "Button 3"), array("text" => "Button 4"),),
+    );
     inlineKeyboard($but, $chatid, "Halo Master");
 }
 
